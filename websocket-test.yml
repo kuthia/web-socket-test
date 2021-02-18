@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: websocket-test-deployment
+  name: web-socket-test-deployment
 spec:
   selector:
     matchLabels:
-      app: websocket-test
+      app: web-socket-test
   replicas: 12
   template:
     metadata:
       labels:
-        app: websocket-test
+        app: web-socket-test
     spec:
       containers:
-        - name: websocket-test
-          image: kuthia/websocket-test
+        - name: web-socket-test
+          image: kuthia/web-socket-test
           ports:
           - containerPort: 8010
           resources:
@@ -30,11 +30,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - name: "http-websocket-test"
+    - name: "http-web-socket-test"
       port: 8010
       targetPort: 8010
   selector:
-    app: websocket-test
+    app: web-socket-test
 status:
   loadBalancer: {}
 

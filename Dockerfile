@@ -2,7 +2,12 @@ FROM node:alpine
 
 LABEL maintainer="ksdn117@gmail.com"
 
-ADD run.sh /run.sh
-CMD ["/run.sh"]
+WORKDIR /app
+
+COPY run.sh /app
+
+RUN npm install ws
+
+CMD ["./run.sh"]
 
 EXPOSE 8010
